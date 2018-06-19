@@ -77,12 +77,13 @@
     <v-footer height="auto" app absolute inset>
       <v-layout row wrap justify-center>
         <v-btn
-          v-for="link in links"
-          :key="link"
+          v-for="(link, index) in links"
+          :key="index"
           color="white"
           flat
+          @click="openTab(link.url)"
         >
-          {{ link }}
+          {{ link.title }}
         </v-btn>
         <v-flex xs12 py-3 text-xs-center white--text>
           &copy;2018 — <strong>Clyde Santiago</strong>
@@ -108,7 +109,11 @@
         loading: false,
         search: '',
         navigationDrawer: false,
-        links: ['Github', 'Gmail', 'Facebook', 'My Website'],
+        links: [
+          { title: 'Github', url: 'https://github.com/clydesantiago'},
+          { title: 'Facebook', url: 'https://web.facebook.com/dexterdev02'},
+          { title: 'My Website', url: 'https://clydesantiago.com/'},
+        ],
         searchResult: null
       }
     },
@@ -126,6 +131,9 @@
           .finally(() => {
             this.loading = false
           })
+      },
+      openTab (link) {
+        window.open(link, '_blank')
       }
     },
     watch: {
