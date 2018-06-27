@@ -3,20 +3,22 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'VueAnime',
+    title: "VueAnime",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Discover trending anime' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: "Discover trending anime"
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }]
   },
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#f57c00' },
+  loading: { color: "#f57c00" },
   /*
   ** Build configuration
   */
@@ -24,22 +26,19 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          loader: "eslint-loader",
           exclude: /(node_modules)/
-        })
+        });
       }
     }
   },
   // Modules
-  modules: [
-    '@nuxtjs/vuetify',
-    '@nuxtjs/axios'
-  ],
+  modules: ["@nuxtjs/vuetify", "@nuxtjs/axios"],
   // Vuetify config
   vuetify: {
     theme: {
@@ -54,6 +53,6 @@ module.exports = {
   },
   // Axios config
   axios: {
-    baseURL: 'https://api.jikan.moe'
+    baseURL: "https://api.jikan.moe"
   }
-}
+};

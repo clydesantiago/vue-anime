@@ -1,22 +1,17 @@
 <template>
-  <v-card :to="'/anime/' + id" nuxt hover height="100%" :style="color ? 'background-color:rgba(' + color[0] + ', ' + color[1] + ', ' + color[2] + ', 1)' : ''">
+  <v-card 
+    :to="'/anime/' + id" 
+    :style="color ? 'background-color:rgba(' + color[0] + ', ' + color[1] + ', ' + color[2] + ', 1)' : ''" 
+    nuxt 
+    hover 
+    height="100%">
     <v-card-media
-    height="300px"
-    :src="img"
-    >
-    </v-card-media>
+      :src="img"
+      height="300px"
+    />
     <v-card-title>
       <span class="title">{{ title }}</span>
-      <v-spacer></v-spacer>
-      <!-- <v-badge overlap color="primary" v-if="rank">
-        <span slot="badge">8</span>
-        <v-icon
-          large
-          color="grey darken-1"
-        >
-          star
-        </v-icon>
-      </v-badge> -->
+      <v-spacer/>
     </v-card-title>
     <v-card-text>
       <span v-if="description">{{ description }}</span>
@@ -45,30 +40,79 @@
 </template>
 
 <script>
-  import * as Vibrant from 'node-vibrant'
+import * as Vibrant from "node-vibrant";
 
-  export default {
-    props: ['title', 'img', 'url', 'rank', 'episodes', 'type', 'genre', 'score', 'id', 'description'],
-    data() {
-      return {
-        color: null
-      }
+export default {
+  // props: [
+  //   "title",
+  //   "img",
+  //   "url",
+  //   "rank",
+  //   "episodes",
+  //   "type",
+  //   "genre",
+  //   "score",
+  //   "id",
+  //   "description"
+  // ],
+  props: {
+    title: {
+      default: "",
+      type: String
     },
-    mounted() {
-      this.test()
+    img: {
+      default: "",
+      type: String
     },
-    methods: {
-      test () {
-        Vibrant.from(this.img).getPalette()
-          .then((palette) => {
-            if(palette.Vibrant){
-              this.color = palette.Vibrant._rgb
-            } else {
-              this.color = palette.Muted._rgb
-            }
-          })
-      }
+    rank: {
+      default: "",
+      type: String
+    },
+    episodes: {
+      default: "",
+      type: String
+    },
+    type: {
+      default: "",
+      type: String
+    },
+    genre: {
+      default: "",
+      type: String
+    },
+    score: {
+      default: "",
+      type: String
+    },
+    id: {
+      default: "",
+      type: String
+    },
+    description: {
+      default: "",
+      type: String
+    }
+  },
+  data() {
+    return {
+      color: null
+    };
+  },
+  mounted() {
+    this.test();
+  },
+  methods: {
+    test() {
+      Vibrant.from(this.img)
+        .getPalette()
+        .then(palette => {
+          if (palette.Vibrant) {
+            this.color = palette.Vibrant._rgb;
+          } else {
+            this.color = palette.Muted._rgb;
+          }
+        });
     }
   }
+};
 </script>
-

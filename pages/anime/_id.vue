@@ -1,21 +1,31 @@
 <template>
   <v-container grid-list-xl>
-    <v-layout row wrap>
-      <v-flex md4 xs12>
-        <v-card :img="items.image_url" height="500px">
+    <v-layout 
+      row 
+      wrap>
+      <v-flex 
+        md4 
+        xs12>
+        <v-card 
+          :img="items.image_url" 
+          height="500px">
           <v-card-title primary-title>
             {{ items.title }}
           </v-card-title>
         </v-card>
       </v-flex>
-      <v-flex md8 xs12>
+      <v-flex 
+        md8 
+        xs12>
         <v-card>
           <v-card-title primary-title>
             <div class="title primary--text">{{ items.title }}</div>
           </v-card-title>
           <v-card-text>
             <v-container grid-list-lg>
-              <v-layout row wrap>
+              <v-layout 
+                row 
+                wrap>
                 <v-flex md12>
                   <div class="body-">{{ items.synopsis }}</div>
                 </v-flex>
@@ -64,7 +74,9 @@
                     <v-list-tile>
                       <v-list-tile-content>
                         <v-list-tile-title>
-                          <div  v-for="(genre, index) in items.genre" :key="'genre' + index">
+                          <div 
+                            v-for="(genre, index) in items.genre" 
+                            :key="'genre' + index">
                             {{ genre.name }},
                           </div>
                         </v-list-tile-title>
@@ -83,14 +95,13 @@
 </template>
 
 <script>
-  export default {
-    asyncData (context) {
-      return context.app.$axios.get('/anime/' + context.params.id)
-        .then(res => {
-          return {
-            items: res.data
-          }
-        })
-    }
+export default {
+  asyncData(context) {
+    return context.app.$axios.get("/anime/" + context.params.id).then(res => {
+      return {
+        items: res.data
+      };
+    });
   }
+};
 </script>

@@ -1,4 +1,4 @@
-import Vuex from 'vuex'
+import Vuex from "vuex";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -6,11 +6,11 @@ const createStore = () => {
       drawer: false
     },
     mutations: {
-      toggleDrawer (state) {
-        state.drawer = !state.drawer
+      toggleDrawer(state) {
+        state.drawer = !state.drawer;
       }
     }
-  })
-}
+  });
+};
 
-export default createStore
+export default createStore;
